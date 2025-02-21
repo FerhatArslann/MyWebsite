@@ -1,50 +1,306 @@
-/* Yleinen tyyli */
-body {
-    font-family: 'Poppins', sans-serif;
+/* Muuttujat ja perusasetukset */
+:root {
+    --primary-color: #6C63FF;
+    --secondary-color: #2A2A2A;
+    --text-color: #FFFFFF;
+    --gradient-bg: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+    --glass-bg: rgba(255, 255, 255, 0.1);
+}
+
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
     background: #121212;
-    color: white;
-    text-align: center;
+    color: var(--text-color);
+    line-height: 1.6;
 }
 
-/* Header */
-header {
-    background: #1f1f1f;
-    padding: 20px;
+/* Lasinen header-efekti */
+.glass-header {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: 600;
+    background: var(--gradient-bg);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigaatio */
 nav ul {
+    display: flex;
+    gap: 2rem;
     list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
 }
 
 nav ul li a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Sektiot */
-section {
-    padding: 50px 20px;
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Hero-osio */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    text-align: center;
+    z-index: 1;
+}
+
+/* Glitch-efekti */
+.glitch-text {
+    font-size: 4rem;
+    font-weight: 700;
+    position: relative;
+    text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                0.025em 0.05em 0 rgba(0,0,255,0.75);
+    animation: glitch 500ms infinite;
+}
+
+/* Kirjoituskone-efekti */
+.typewriter {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    border-right: 2px solid var(--primary-color);
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(40, end),
+               blink-caret 0.75s step-end infinite;
+}
+
+/* CTA-painikkeet */
+.cta-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.cta-primary, .cta-secondary {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+}
+
+.cta-primary {
+    background: var(--gradient-bg);
+    color: white;
+}
+
+.cta-secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.cta-primary:hover, .cta-secondary:hover {
+    transform: translateY(-3px);
+}
+
+/* Projektit */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
 }
 
 .project {
-    background: #222;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px;
-    border-radius: 10px;
+    background: var(--secondary-color);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
-/* Footer */
-footer {
-    background: #1f1f1f;
-    padding: 10px;
-    margin-top: 20px;
+.project:hover {
+    transform: translateY(-10px);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.project-tags span {
+    background: var(--primary-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* Taidot */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.skill-card {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.skill-card i {
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+    }
+    
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+/* Animaatiot */
+@keyframes glitch {
+    0% {
+        text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                    -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                    0.025em 0.05em 0 rgba(0,0,255,0.75);
+    }
+    14% {
+        text-shadow: 0.05em 0 0 rgba(255,0,0,0.75),
+                    -0.025em -0.05em 0 rgba(0,255,0,0.75),
+                    0.025em 0.05em 0 rgba(0,0,255,0.75);
+    }
+    15% {
+        text-shadow: -0.05em -0.025em 0 rgba(255,0,0,0.75),
+                    0.025em 0.025em 0 rgba(0,255,0,0.75),
+                    -0.05em -0.05em 0 rgba(0,0,255,0.75);
+    }
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--primary-color) }
+}
+
+/* Alasivujen yleiset tyylit */
+.section-content {
+    padding: 120px 2rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Yhteystietolomake */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.contact-form {
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    border-radius: 5px;
+}
+
+/* Projektisuodattimet */
+.projects-filter {
+    margin: 2rem 0;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+    background: var(--primary-color);
+}
+
+/* Responsiivisuus */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-filter {
+        justify-content: center;
+    }
 }
