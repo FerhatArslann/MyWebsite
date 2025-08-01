@@ -134,29 +134,45 @@ nav ul li a:hover {
 /* Projektit */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
-    padding: 2rem;
+    margin-top: 2rem;
 }
 
-.project {
-    background: var(--secondary-color);
-    border-radius: 15px;
+.project-card {
+    background: #fff;
+    border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
 }
 
-.project:hover {
-    transform: translateY(-10px);
+.project-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.16);
+    z-index: 2;
 }
 
 .project-image img {
     width: 100%;
-    height: auto;
+    height: 180px;
+    object-fit: cover;
+    display: block;
 }
 
-.project-content {
-    padding: 1.5rem;
+.project-info {
+    padding: 1rem;
+}
+
+.project-info h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 .project-tags {
@@ -192,7 +208,7 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-/* Responsiivisuus */
+/* Responsiivuus */
 @media (max-width: 768px) {
     nav ul {
         display: none;
@@ -295,7 +311,7 @@ nav ul li a:hover {
     background: var(--primary-color);
 }
 
-/* Responsiivisuus */
+/* Responsiivuus */
 @media (max-width: 768px) {
     .contact-container {
         grid-template-columns: 1fr;
