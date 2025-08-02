@@ -77,3 +77,32 @@ function highlightActiveNavLink() {
         });
     });
 }
+
+// Scroll-to-top functionality
+document.querySelector(".scroll-up a").addEventListener("click", function(event) {
+    event.preventDefault();
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// Smooth scroll for internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Scroll-to-top button visibility
+window.addEventListener("scroll", function() {
+    const scrollUpButton = document.querySelector(".scroll-up");
+    if (window.scrollY > 300) {
+        scrollUpButton.style.display = "block";
+    } else {
+        scrollUpButton.style.display = "none";
+    }
+});
