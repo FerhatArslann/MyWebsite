@@ -22,10 +22,18 @@ app.post('/api/contact', async (req, res) => {
 
     try {
         await transporter.sendMail({
-            from: email,
-            to: process.env.EMAIL_USER,
-            subject: `Contact from ${name}`,
-            text: message
+            from: process.env.EMAIL_USER, // Always your authenticated email
+            to: process.env.EMAIL_USER,   // Your email
+            subject: `[My Website Contact] Message from ${name}`,
+            text: `
+You have a new contact form submission from your website:
+
+Name: ${name}
+Email: ${email}
+
+Message:
+${message}
+`
         });
         res.json({ success: true });
     } catch (err) {

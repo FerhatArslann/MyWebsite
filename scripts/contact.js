@@ -5,15 +5,12 @@ document.addEventListener("DOMContentLoaded", function() {
     form.addEventListener("submit", async function(e) {
         e.preventDefault();
 
+        formMessage.textContent = "Sending...";
+        formMessage.style.color = "orange";
+
         const name = form.name.value.trim();
         const email = form.email.value.trim();
         const message = form.message.value.trim();
-
-        if (!name || !email || !message) {
-            formMessage.textContent = "Please fill in all fields.";
-            formMessage.style.color = "red";
-            return;
-        }
 
         try {
             const response = await fetch('http://localhost:3001/api/contact', {
