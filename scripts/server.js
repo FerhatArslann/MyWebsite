@@ -1,3 +1,5 @@
+// server.js
+
 // Import required modules
 const express = require('express');
 const nodemailer = require('nodemailer');

@@ -1,3 +1,5 @@
+// contact.js
+
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
