@@ -24,7 +24,7 @@ app.post('/api/contact', async (req, res) => {
         await transporter.sendMail({
             from: process.env.EMAIL_USER, // Always your authenticated email
             to: process.env.EMAIL_USER,   // Your email
-            subject: `[My Website Contact] Message from ${name}`,
+            subject: `[MyWebsite Contact] Message from ${name}`,
             text: `
 You have a new contact form submission from your website:
 
