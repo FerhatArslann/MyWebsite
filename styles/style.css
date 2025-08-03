@@ -78,6 +78,84 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
+/* Mobile navigation styles */
+.main-nav {
+    position: relative;
+}
+
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    width: 40px;
+    height: 40px;
+}
+
+.hamburger,
+.hamburger::before,
+.hamburger::after {
+    display: block;
+    background: var(--primary-color);
+    height: 4px;
+    width: 28px;
+    border-radius: 2px;
+    position: absolute;
+    transition: all 0.3s ease;
+    content: '';
+}
+
+.hamburger {
+    position: relative;
+    margin: 18px 0 0 6px;
+}
+
+.hamburger::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+}
+
+.hamburger::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+@media (max-width: 900px) {
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: var(--secondary-color);
+        flex-direction: column;
+        width: 200px;
+        padding: 1rem 0;
+        gap: 1rem;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        display: none;
+        z-index: 1000;
+    }
+    .main-nav.open .nav-links {
+        display: flex;
+    }
+    .nav-toggle {
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+}
+
 /* Hero section */
 .hero-section {
     min-height: 100vh;
