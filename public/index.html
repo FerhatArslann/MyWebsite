@@ -4,13 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Website</title>
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="../styles/style.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Header with logo and navigation -->
     <header class="glass-header">
-        <div class="logo"><a href="index.html" class="logo-link">FA</div>
+        <div class="logo"><a href="index.html" class="logo-link">FA</a></div>
         <nav>
             <ul>
                 <li><a href="#about"><i class="fas fa-user"></i> About Me</a></li>
@@ -21,6 +25,7 @@
         </nav>
     </header>
 
+    <!-- Hero section with name and call-to-action buttons -->
     <section id="hero" class="hero-section">
         <div class="hero-content">
             <h1 class="glitch-text">Ferhat Arslan</h1>
@@ -32,6 +37,7 @@
         </div>
     </section>
 
+    <!-- About section with personal introduction -->
     <section id="about" class="about-section">
         <div class="section-content">
             <h2>About me</h2>
@@ -53,6 +59,7 @@
         </div>
     </section>
 
+    <!-- Skills section listing frameworks, languages, and tools -->
     <section id="skills" class="skills-section">
         <div class="section-content">
             <h2>My Skills</h2>
@@ -76,10 +83,12 @@
         </div>
     </section>
 
+    <!-- Projects section with project cards -->
     <section id="projects" class="projects-section">
         <div class="section-content">
             <h2>My Projects</h2>
             <div class="projects-grid">
+                <!-- Each project card links to a GitHub repository and shows an image and description -->
                 <a href="https://github.com/FerhatArslann/MyWebsite" class="project-card" target="_blank" rel="noopener">
                     <div class="project-image">
                         <img src="https://via.placeholder.com/400x300?text=MyWebsite" alt="MyWebsite">
@@ -174,6 +183,7 @@
         </div>
     </section>
 
+    <!-- Contact section with links to profiles -->
     <section id="contact" class="contact-section">
         <div class="section-content">
             <h2>My Links</h2>
@@ -196,6 +206,7 @@
         </div>
     </section>
 
+    <!-- Footer with copyright and social links -->
     <footer>
         <div class="footer-content">
             <p>&copy; 2025 Ferhat Arslan</p>
@@ -206,9 +217,11 @@
             </div>
         </div>
     </footer>
+    <!-- Scroll-up button -->
     <div class="scroll-up">
         <a href="#hero"><i class="fas fa-arrow-up"></i></a>
     </div>
+    <!-- Main JavaScript file -->
     <script src="../scripts/main.js"></script>
 </body>
 </html>

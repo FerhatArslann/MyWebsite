@@ -1,18 +1,18 @@
 // main.js
 
-// DOM-elementtien latauksen jälkeen suoritettavat toiminnot
+// Actions to perform after DOM elements have loaded
 document.addEventListener("DOMContentLoaded", function() {
-    // Projektien animointi
+    // Animate projects
     animateProjects();
     
-    // Scroll-animaatiot
+    // Scroll animations
     initScrollAnimations();
     
-    // Navigaation aktiivisen linkin korostus
+    // Highlight active navigation link
     highlightActiveNavLink();
 });
 
-// Projektien sisääntuloanimaatio
+// Project entrance animation
 function animateProjects() {
     const projects = document.querySelectorAll(".project");
     
@@ -21,7 +21,7 @@ function animateProjects() {
         project.style.transform = "translateY(50px)";
         project.style.transition = "all 0.5s ease";
         
-        // Porrastettu animaatio
+        // Staggered animation
         setTimeout(() => {
             project.style.opacity = "1";
             project.style.transform = "translateY(0)";
@@ -29,7 +29,7 @@ function animateProjects() {
     });
 }
 
-// Scroll-pohjaisten animaatioiden alustus
+// Initialize scroll-based animations
 function initScrollAnimations() {
     const sections = document.querySelectorAll("section");
     
@@ -52,7 +52,7 @@ function initScrollAnimations() {
     });
 }
 
-// Aktiivisen navigaatiolinkin korostus
+// Highlight the active navigation link
 function highlightActiveNavLink() {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll("nav a");
