@@ -3,8 +3,27 @@
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("contactForm");
     const formMessage = document.getElementById("formMessage");
+    const message = document.getElementById('message');
+    const counter = document.getElementById('message-counter');
+    let lastSubmit = 0;
+
+    // Live character counter for message
+    if (message && counter) {
+        message.addEventListener('input', function() {
+            counter.textContent = `${message.value.length} / 5000`;
+        });
+    }
 
     form.addEventListener("submit", async function(e) {
+        const now = Date.now();
+        // 30 seconds cooldown between submits
+        if (now - lastSubmit < 30000) {
+            e.preventDefault();
+            alert('Please wait before sending another message.');
+            return false;
+        }
+        lastSubmit = now;
+
         e.preventDefault(); // Prevent default form submission (page reload)
 
         // Show a sending message to the user
@@ -38,6 +57,15 @@ document.addEventListener("DOMContentLoaded", function() {
             // Show error message if the request fails
             formMessage.textContent = "Error sending message. Please try again.";
             formMessage.style.color = "red";
+        }
+
+        // Optionally disable the button to prevent double submit
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            setTimeout(() => {
+                submitBtn.disabled = false;
+            }, 30000);
         }
     });
 });

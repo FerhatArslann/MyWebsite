@@ -547,3 +547,86 @@ html {
         font-size: 1.2rem;
     }
 }
+
+/* --- Add or update these styles for your bottom CTA --- */
+
+.contact-me {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 0 0;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    border-radius: 1rem;
+    box-shadow: 0 4px 24px rgba(80, 80, 120, 0.10);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer; /* Show pointer on hover */
+}
+
+.contact-me:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(80, 80, 120, 0.18);
+}
+
+.contact-me a.contact-link {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: none;
+    color: inherit;
+    border-radius: 1rem;
+    text-indent: -9999px; /* Hide text, but keep link accessible */
+    overflow: hidden;
+}
+
+.contact-me i {
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0,0,0,0.12);
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    z-index: 1;
+    pointer-events: none; /* Let the link overlay handle clicks */
+}
+
+/* Optional: visually hide the link text but keep it accessible for screen readers */
+.contact-me .contact-link::after {
+    content: "Send Email";
+    position: absolute;
+    left: -9999px;
+}
+
+.contact-now-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Contact CTA title styles */
+.contact-cta-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    letter-spacing: -1px;
+}
+
+/* Contact CTA description styles */
+.contact-cta-desc {
+    font-size: 1.15rem;
+    color: #bdbdbd;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 400;
+    line-height: 1.7;
+}
