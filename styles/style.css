@@ -289,6 +289,9 @@ nav ul li a:hover {
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 2rem;
     padding: 2rem;
+    background: var(--secondary-color);
+    border-radius: 15px;
+    margin-top: 2rem;
 }
 
 .skill-card {
@@ -296,6 +299,35 @@ nav ul li a:hover {
     padding: 2rem;
     border-radius: 15px;
     text-align: center;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    cursor: default;
+    transform: translateY(0);
+    opacity: 1;
+    will-change: transform, opacity;
+}
+
+.skill-card.lifted {
+    transform: translateY(-12px) scale(1.10);
+    box-shadow: 0 12px 32px rgba(108, 99, 255, 0.18), 0 2px 8px rgba(0,0,0,0.10);
+    z-index: 2;
+}
+
+.skill-card.text-scaled {
+    /* Scale up all text inside the card slightly */
+    /* You can target specific elements if you want finer control */
+    /* Example: scale the whole card's content */
+    transform: translateY(-12px) scale(1.10);
+}
+
+.skill-card.lifted.text-scaled {
+    /* Ensure both effects combine smoothly */
+    transform: translateY(-12px) scale(1.10);
 }
 
 .skill-card i {
@@ -629,4 +661,43 @@ html {
     text-align: center;
     font-weight: 400;
     line-height: 1.7;
+}
+
+/* Add this for the fade-in-up effect */
+.hero-subtitle {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 5.0s cubic-bezier(.4,0,.2,1), transform 5.0s cubic-bezier(.4,0,.2,1);
+    font-size: 1.25rem;
+    color: #ffffff;
+    margin: 1rem 0 2rem 0;
+    font-weight: 400;
+    text-align: center;
+    letter-spacing: 0.01em;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-subtitle.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    text-align: center;
+    color: #fff;
+    margin-bottom: 1.2rem;
+    letter-spacing: -1px;
+    line-height: 1.15;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 3.0s cubic-bezier(.4,0,.2,1), transform 3.0s cubic-bezier(.4,0,.2,1);
+}
+
+.hero-title.fade-in-up {
+    opacity: 1;
+    transform: translateY(0);
 }

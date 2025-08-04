@@ -10,6 +10,37 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Highlight active navigation link
     highlightActiveNavLink();
+    
+    // Fade-in effect for hero title and subtitle
+    const heroTitle = document.querySelector('.hero-title');
+    const subtitle = document.querySelector('.hero-subtitle');
+    if (heroTitle) {
+        heroTitle.classList.add('fade-in-up');
+    }
+    if (subtitle) {
+        subtitle.classList.add('fade-in-up');
+    }
+
+    // Skill card hover lift effect with JS for smoothness and mobile tap support
+    document.querySelectorAll('.skill-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.classList.add('lifted');
+            card.classList.add('text-scaled');
+        });
+        card.addEventListener('mouseleave', () => {
+            card.classList.remove('lifted');
+            card.classList.remove('text-scaled');
+        });
+        // Optional: tap effect for mobile
+        card.addEventListener('touchstart', () => {
+            card.classList.add('lifted');
+            card.classList.add('text-scaled');
+        });
+        card.addEventListener('touchend', () => {
+            card.classList.remove('lifted');
+            card.classList.remove('text-scaled');
+        });
+    });
 });
 
 // Project entrance animation
