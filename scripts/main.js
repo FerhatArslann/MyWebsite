@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
         subtitle.classList.add('fade-in-up');
     }
 
-    // Skill card hover lift effect with JS for smoothness and mobile tap support
+    /* Skill card hover lift effect with JS for smoothness and mobile tap support
     document.querySelectorAll('.skill-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             card.classList.add('lifted');
@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function() {
             card.classList.remove('lifted');
             card.classList.remove('text-scaled');
         });
-    });
-});
+    }); */
+}); 
 
 // Project entrance animation
 function animateProjects() {
