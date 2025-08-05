@@ -21,26 +21,19 @@ document.addEventListener("DOMContentLoaded", function() {
         subtitle.classList.add('fade-in-up');
     }
 
-    /* Skill card hover lift effect with JS for smoothness and mobile tap support
-    document.querySelectorAll('.skill-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            card.classList.add('lifted');
-            card.classList.add('text-scaled');
+    // Header background toggle on scroll
+    const header = document.querySelector('.glass-header');
+    if (header) {
+        header.classList.remove('active');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 0) {
+                header.classList.add('active');
+            } else {
+                header.classList.remove('active');
+            }
         });
-        card.addEventListener('mouseleave', () => {
-            card.classList.remove('lifted');
-            card.classList.remove('text-scaled');
-        });
-        // Optional: tap effect for mobile
-        card.addEventListener('touchstart', () => {
-            card.classList.add('lifted');
-            card.classList.add('text-scaled');
-        });
-        card.addEventListener('touchend', () => {
-            card.classList.remove('lifted');
-            card.classList.remove('text-scaled');
-        });
-    }); */
+    }
+
 }); 
 
 // Project entrance animation

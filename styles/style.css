@@ -46,8 +46,8 @@ body > * {
 
 /* Glass header effect */
 .glass-header {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
+    background: transparent;
+    backdrop-filter: none;
     position: fixed;
     width: 100%;
     z-index: 1000;
@@ -55,6 +55,14 @@ body > * {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
+    box-shadow: none; /* Remove shadow by default */
+}
+
+.glass-header.active {
+    background: rgba(44,44,64,0.75);
+    box-shadow: 0 4px 24px rgba(108,99,255,0.10);
+    backdrop-filter: blur(10px);
 }
 
 /* Logo styles */
