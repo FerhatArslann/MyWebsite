@@ -820,3 +820,112 @@ html {
 .about-bg-fade {
     display: none !important;
 }
+
+/* Contact section styles */
+.contact-section {
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 5rem auto 2rem auto;
+    max-width: 700px;
+    padding: 0 2rem 4rem 2rem;
+    position: relative;
+    text-align: center;
+}
+
+/* Add a soft accent line under the heading */
+.contact-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color, #6C63FF);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+    position: relative;
+    display: inline-block;
+}
+.contact-section h2::after {
+    content: "";
+    display: block;
+    margin: 0.7rem auto 0 auto;
+    width: 60px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    opacity: 0.7;
+}
+
+/* Softer, more open description */
+.contact-desc {
+    color: #bdbdbd;
+    font-size: 1.15rem;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+    line-height: 1.7;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: none;
+    box-shadow: none;
+}
+
+/* Glassmorphism CTA, floating effect */
+.contact-me {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin: 2.5rem auto 0 auto;
+    padding: 1.2rem 2.2rem;
+    background: rgba(44, 44, 64, 0.45);
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 32px rgba(108,99,255,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
+    backdrop-filter: blur(12px);
+    max-width: 420px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+    border: 1.5px solid rgba(108,99,255,0.13);
+}
+
+.contact-me:hover {
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 12px 40px rgba(108,99,255,0.18), 0 2px 12px rgba(0,0,0,0.13);
+}
+
+.contact-me i {
+    font-size: 2rem;
+    color: #fff;
+    background: rgba(0,0,0,0.10);
+    border-radius: 50%;
+    padding: 0.5rem;
+    margin-right: 0.5rem;
+    pointer-events: none;
+}
+
+.contact-now-text {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.15rem;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+}
+
+.contact-link {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-decoration: none;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    padding: 0.6rem 1.4rem;
+    border-radius: 0.7rem;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(80, 80, 120, 0.08);
+    display: inline-block;
+    margin-left: 0.5rem;
+    border: none;
+}
+
+.contact-link:hover, .contact-link:focus {
+    background: #fff;
+    color: #6C63FF;
+    text-decoration: none;
+}
