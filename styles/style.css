@@ -19,7 +19,7 @@ body {
     font-family: 'Poppins', sans-serif;
     background:
         linear-gradient(120deg, rgba(108,99,255,0.13) 0%, rgba(255,101,132,0.10) 100%),
-        url('../assets/bg_style.webp') center top/cover no-repeat fixed;
+        url('../public/assets/bg_style.png') center top/cover no-repeat fixed;
     background-blend-mode: overlay;
     color: var(--text-color);
     line-height: 1.6;
