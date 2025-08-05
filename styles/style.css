@@ -481,6 +481,7 @@ footer {
     color: var(--text-color);
 }
 
+/*
 footer .social-links {
     display: flex;
     justify-content: center;
@@ -496,6 +497,7 @@ footer .social-links a {
 footer .social-links a:hover {
     color: var(--primary-color);
 }
+*/
 
 /* Contact info and cards */
 .contact-container {
@@ -928,4 +930,62 @@ html {
     background: #fff;
     color: #6C63FF;
     text-decoration: none;
+}
+
+/* Add or update in your CSS file */
+.links-section {
+    display: flex;
+    justify-content: center;
+    gap: 2.2rem;
+    margin: 2.5rem 0 1.5rem 0;
+    padding: 0;
+    background: none;
+}
+
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.1rem;
+    color: #bdbdbd;
+    background: none;
+    border-radius: 50%;
+    transition: color 0.22s, transform 0.22s, box-shadow 0.22s, background 0.22s;
+    box-shadow: none;
+    width: 54px;
+    height: 54px;
+    position: relative;
+    flex-direction: column;
+    text-decoration: none;
+}
+
+.social-link:hover,
+.social-link:focus {
+    color: var(--primary-color, #6C63FF);
+    background: rgba(108,99,255,0.08);
+    transform: translateY(-4px) scale(1.13);
+    box-shadow: 0 6px 24px rgba(108,99,255,0.13);
+    outline: none;
+}
+
+.social-link i {
+    pointer-events: none;
+}
+
+.social-label {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.98rem;
+    color: #bdbdbd;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: color 0.22s;
+    text-align: center;
+    pointer-events: none;
+    user-select: none;
+}
+
+.social-link:hover .social-label,
+.social-link:focus .social-label {
+    color: var(--primary-color, #6C63FF);
 }
