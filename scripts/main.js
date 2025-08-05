@@ -167,3 +167,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+// Remove persistent focus highlight after clicking a social link
+document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('mouseup', function() {
+        this.blur();
+    });
+    link.addEventListener('mouseleave', function() {
+        this.blur();
+    });
+});
