@@ -1084,13 +1084,16 @@ html {
     position: relative;
     text-decoration: none;
     z-index: 1;
-    overflow: visible;
 }
 
 .social-link:hover,
 .social-link:focus {
     color: #fff;
-    background: linear-gradient(135deg, #6C63FF 0%, #FF6584 100%);
+    background: linear-gradient(
+        135deg,
+        rgba(108,99,255,0.65) 0%,
+        rgba(255,101,132,0.45) 100%
+    );
     transform: translateY(-8px) scale(1.15) rotate(-6deg);
     box-shadow: 0 8px 32px rgba(108,99,255,0.18), 0 2px 12px rgba(0,0,0,0.13);
     outline: none;
