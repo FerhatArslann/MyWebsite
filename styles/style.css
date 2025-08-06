@@ -387,7 +387,7 @@ nav ul li a:hover {
     content: "";
     display: block;
     margin: 1.1rem auto 0 auto;
-    width: 70px;
+    width: 200px;
     height: 4px;
     border-radius: 2px;
     background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
@@ -463,6 +463,10 @@ nav ul li a:hover {
     font-weight: 400;
     letter-spacing: 0.01em;
     background: none;
+}
+
+.about-text p {
+    text-wrap: pretty; /* Modern browsers: tries to avoid widows */
 }
 
 @media (max-width: 900px) {
@@ -657,7 +661,7 @@ footer .social-links a:hover {
 /* Scroll-up button styles */
 .scroll-up {
     position: fixed;
-    bottom: 30px;
+    bottom: 20px;
     right: 30px;
     z-index: 1000;
     background: var(--primary-color);
@@ -844,101 +848,79 @@ html {
     transform: translateY(0);
 }
 
-.profile-picture {
-    border-radius: 16px;
-    box-shadow: 0 6px 32px rgba(108,99,255,0.15), 0 1.5px 8px rgba(0,0,0,0.10);
-    object-fit: cover;
-    width: 100%;
-    max-width: 400px;
-    height: auto;
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1), box-shadow 0.3s cubic-bezier(.4,0,.2,1);
-    background: #23223a;
-}
-.profile-picture:hover {
-    /* transform: scale(1.03) translateY(-4px); */
-    box-shadow: 0 12px 40px rgba(108,99,255,0.22), 0 2px 12px rgba(0,0,0,0.13);
-}
-
 /* About section with background image behind text and fade at the bottom */
 .about-section {
-    position: relative;
-    overflow: visible;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 520px;
-    padding: 0;
+    min-height: 340px;
+    padding: 120px 0 60px 0;
     background: none;
 }
 
-.about-accent-image {
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 340px;
-    max-width: 40vw;
-    height: 420px;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 2.5rem;
-    box-shadow: 0 8px 48px 0 rgba(108,99,255,0.16), 0 2px 12px rgba(0,0,0,0.10);
-    opacity: 0.82;
-    z-index: 1;
-    filter: blur(0.5px) brightness(0.98) saturate(1.1);
-    background: #23223a;
-}
-
-@media (max-width: 900px) {
-    .about-accent-image {
-        position: static;
-        transform: none;
-        width: 100%;
-        max-width: 100vw;
-        height: 180px;
-        margin-bottom: 1.5rem;
-        border-radius: 1.2rem;
-        box-shadow: 0 4px 24px 0 rgba(108,99,255,0.13), 0 1px 6px rgba(0,0,0,0.08);
-        opacity: 0.92;
-    }
-    .about-section {
-        flex-direction: column;
-        min-height: 0;
-    }
-}
-
-/* About section content stays centered and above the accent image */
-.about-grid {
-    position: relative;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 3rem 2rem 2rem 2rem;
+.about-section-content {
+    width: 100%;
     max-width: 700px;
     margin: 0 auto;
-    background: rgba(42,42,42,0.82);
-    border-radius: 1.5rem;
-    box-shadow: 0 2px 24px rgba(0,0,0,0.10);
-    backdrop-filter: blur(2px);
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color, #6C63FF);
+    margin-bottom: 1.2rem;
+    letter-spacing: -1px;
+    text-align: center;
+    position: relative;
+}
+
+.about-section h2::after {
+    content: "";
+    display: block;
+    margin: 0.7rem auto 0 auto;
+    width: 200px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    opacity: 0.7;
 }
 
 .about-text {
-    color: #fff;
-    font-size: 1.15rem;
+    color: #e0e0e0;
+    font-size: 1.22rem;
     font-weight: 400;
-    line-height: 1.7;
-    text-shadow: 0 2px 16px rgba(0,0,0,0.18);
-    margin-bottom: 0;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    animation: fadeInUp 0.9s cubic-bezier(.4,2,.3,1) 0.1s both;
 }
 
-/* Remove old about-bg-image and fade styles if present */
-.about-bg-image,
-.about-bg-fade {
-    display: none !important;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(32px);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section-content {
+        padding: 0 1rem;
+    }
+    .about-text {
+        font-size: 1.05rem;
+        max-width: 98vw;
+    }
 }
 
 /* Contact section styles */
@@ -967,25 +949,25 @@ html {
     content: "";
     display: block;
     margin: 0.7rem auto 0 auto;
-    width: 60px;
+    width: 200px;
     height: 4px;
     border-radius: 2px;
     background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
     opacity: 0.7;
 }
 
-/* Softer, more open description */
-.contact-desc {
+/* Contact description styles */
+.contact-description {
     color: #bdbdbd;
-    font-size: 1.15rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.24rem;
+    margin-top: 0.8rem;
+    margin-bottom: -1.2rem;
     font-weight: 400;
-    line-height: 1.7;
-    max-width: 500px;
+    line-height: 1.5;
+    max-width: 525px;
+    text-align: left;
     margin-left: auto;
     margin-right: auto;
-    background: none;
-    box-shadow: none;
 }
 
 /* Glassmorphism CTA, floating effect */
@@ -1054,7 +1036,7 @@ html {
 .links-section {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 2.5rem;
     margin: 3.5rem 0 2.5rem 0;
     padding: 0;
     background: none;

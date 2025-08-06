@@ -170,3 +170,8 @@ document.querySelectorAll('.social-link').forEach(link => {
         this.blur();
     });
 });
+
+// Add non-breaking space before the last word in each paragraph of .about-text
+document.querySelectorAll('.about-text p').forEach(p => {
+    p.innerHTML = p.innerHTML.replace(/\s+([^\s<]+)\s*$/, '&nbsp;$1');
+});
