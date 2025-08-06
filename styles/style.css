@@ -598,10 +598,11 @@ nav ul li a:hover {
 
 /* Footer styles */
 footer {
-    background: var(--secondary-color);
+    background: linear-gradient(120deg, rgba(35,34,58,0.60) 0%, rgba(108,99,255,0.20) 100%);
     padding: 2rem;
     text-align: center;
     color: var(--text-color);
+    overflow: hidden;
 }
 
 /*
@@ -900,18 +901,6 @@ html {
     background: none;
     box-shadow: none;
     padding: 0;
-    animation: fadeInUp 0.9s cubic-bezier(.4,2,.3,1) 0.1s both;
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(32px);
-    }
-    to {
-        opacity: 1;
-        transform: none;
-    }
 }
 
 @media (max-width: 600px) {
