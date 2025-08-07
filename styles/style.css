@@ -275,6 +275,20 @@ nav ul li a:hover {
     opacity: 0.7;
 }
 
+.project-description {
+    color: #e0e0e0;
+    font-size: 1.22rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1022,16 +1036,17 @@ html {
 
 /* Contact description styles */
 .contact-description {
-    color: #bdbdbd;
-    font-size: 1.24rem;
-    margin-top: 0.8rem;
-    margin-bottom: -1.2rem;
+    color: #e0e0e0;
+    font-size: 1.22rem;
     font-weight: 400;
-    line-height: 1.5;
-    max-width: 525px;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.8;
+    margin: 0 auto;
+    max-width: 100%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    background: none;
+    box-shadow: none;
+    padding: 0;
 }
 
 /* Glassmorphism CTA, floating effect */
