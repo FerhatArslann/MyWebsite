@@ -256,6 +256,25 @@ nav ul li a:hover {
 }
 
 /* Projects grid layout */
+.projects-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.projects-section h2::after {
+    content: "";
+    display: block;
+    margin: 0.7rem auto 0 auto;
+    width: 200px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    opacity: 0.7;
+}
+
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
