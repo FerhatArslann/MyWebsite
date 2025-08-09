@@ -34,6 +34,42 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Open modal on popup icon click
+    document.querySelectorAll('.project-image .popup-icon').forEach(icon => {
+        icon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const imgSrc = icon.parentElement.querySelector('img').src;
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            if (modal && modalImg) {
+                modalImg.src = imgSrc;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal on X button click
+    const closeModalBtn = document.querySelector('.close-modal');
+    if (closeModalBtn) {
+        closeModalBtn.onclick = function() {
+            const modal = document.getElementById('image-modal');
+            if (modal) modal.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+    }
+
+    // Close modal when clicking outside the image
+    const imageModal = document.getElementById('image-modal');
+    if (imageModal) {
+        imageModal.addEventListener('click', function(e) {
+            if (e.target === imageModal) {
+                imageModal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
 }); 
 
 // Project entrance animation
@@ -175,3 +211,49 @@ document.querySelectorAll('.social-link').forEach(link => {
 document.querySelectorAll('.about-text p').forEach(p => {
     p.innerHTML = p.innerHTML.replace(/\s+([^\s<]+)\s*$/, '&nbsp;$1');
 });
+
+// === Popup Image Modal Setup (unified) ===
+document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeBtn = modal ? modal.querySelector('.close-modal') : null;
+
+    if (!modal || !modalImg) return;
+
+    // Open when clicking popup icon OR the image container
+    document.querySelectorAll('.project-image').forEach(container => {
+        container.addEventListener('click', e => {
+            const imgEl = container.querySelector('img');
+            if (!imgEl) return;
+            // If user clicked the icon or anywhere on image container
+            if (e.target.closest('.popup-icon') || e.currentTarget === container) {
+                modalImg.src = imgEl.src;
+                modal.classList.add('active');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('lock-scroll');
+            }
+        });
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        modalImg.src = '';
+        document.body.classList.remove('lock-scroll');
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Click outside image closes
+    modal.addEventListener('click', e => {
+        if (e.target === modal) closeModal();
+    });
+
+    // ESC key closes
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+    });
+});
+// === End Popup Image Modal Setup ===

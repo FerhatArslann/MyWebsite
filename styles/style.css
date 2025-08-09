@@ -314,7 +314,7 @@ nav ul li a:hover {
 .project-image {
     width: 100%;
     height: 160px;
-    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    background: #23223a;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -322,14 +322,46 @@ nav ul li a:hover {
     position: relative;
 }
 
+.project-image .popup-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.2rem;
+    color: #fff;
+    background: rgba(44,44,64,0.85);
+    border-radius: 50%;
+    padding: 0.45rem;
+    opacity: 0;
+    pointer-events: auto;          /* Was none – now clickable */
+    cursor: pointer;               /* Shows it's interactive */
+    transition: opacity 0.22s cubic-bezier(.4,2,.3,1), filter 0.22s cubic-bezier(.4,2,.3,1);
+    z-index: 2;
+    box-shadow: 0 2px 8px rgba(108,99,255,0.13);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.project-image:hover .popup-icon {
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 2px 8px rgba(108,99,255,0.18));
+}
+
+.project-image {
+    cursor: zoom-in;
+}
+
 .project-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-bottom: 2px solid rgba(108,99,255,0.13);
     border-radius: 0 0 12px 12px;
     transition: filter 0.22s;
     filter: brightness(0.98) saturate(1.08);
+    background: none;
 }
 
 .project-card:hover .project-image img {
@@ -342,6 +374,9 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    /* Center project info text and adjust GitHub button style */
 }
 
 .project-info h3 {
@@ -350,6 +385,7 @@ nav ul li a:hover {
     color: #fff;
     margin-bottom: 0.7rem;
     letter-spacing: -0.5px;
+    text-align: center;
 }
 
 .project-info p {
@@ -365,41 +401,65 @@ nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
+    justify-content: center;
 }
 
 .project-tags span {
-    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
-    color: #fff;
+    background: #23223a;
+    color: #bdbdbd;
     font-size: 0.92rem;
     font-weight: 500;
     padding: 0.32rem 0.8rem;
     border-radius: 12px;
     letter-spacing: 0.01em;
-    box-shadow: 0 2px 8px rgba(108,99,255,0.08);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
     user-select: none;
+    margin-bottom: 2px;
+    border: 1px solid #333;
 }
 
 .project-link {
     display: inline-block;
     margin-top: 0.5rem;
-    padding: 0.7rem 1.3rem;
-    background: none;
-    border: 2px solid #6C63FF;
-    color: #6C63FF;
+    padding: 0.5rem 1rem;
+    font-size: 0.98rem;
+    background: #35345a;
+    color: #e0e0e0;
     font-weight: 600;
-    border-radius: 50px;
+    border-radius: 30px;
+    box-shadow: 0 1px 6px rgba(108,99,255,0.10);
+    border: none;
+    transition: 
+        background 0.18s cubic-bezier(.4,0,.2,1),
+        color 0.18s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.18s cubic-bezier(.4,0,.2,1),
+        filter 0.18s cubic-bezier(.4,0,.2,1),
+        transform 0.18s cubic-bezier(.4,0,.2,1);
+    outline: none;
     text-decoration: none;
-    transition: background 0.22s, color 0.22s, border 0.22s;
-    font-size: 1rem;
-    align-self: flex-start;
 }
 
-.project-link:hover,
+.project-link:active,
 .project-link:focus {
-    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
-    color: #fff;
-    border-color: #FF6584;
+    background: #35345a;
+    color: #e0e0e0;
     outline: none;
+    box-shadow: 0 1px 6px rgba(108,99,255,0.10);
+    text-decoration: none;
+}
+
+.project-link:hover {
+    background: #6C63FF;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(108,99,255,0.18);
+    filter: brightness(1.15);
+    transform: scale(1.12);
+    transition: 
+        background 0.22s cubic-bezier(.4,2,.3,1),
+        color 0.22s cubic-bezier(.4,2,.3,1),
+        box-shadow 0.22s cubic-bezier(.4,2,.3,1),
+        filter 0.22s cubic-bezier(.4,2,.3,1),
+        transform 0.22s cubic-bezier(.4,2,.3,1);
 }
 
 /* Skills section grid */
@@ -1208,5 +1268,105 @@ html {
     }
     .social-label {
         font-size: 0.92rem;
+    }
+}
+
+/* Add to your style.css */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(24,24,32,0.88);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: opacity 0.22s cubic-bezier(.4,2,.3,1);
+}
+
+.image-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.image-modal img {
+    max-width: 90vw;
+    max-height: 80vh;
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(108,99,255,0.18), 0 2px 12px rgba(0,0,0,0.13);
+    background: #23223a;
+    border: 2px solid #35345a;
+    margin-bottom: 2rem;
+    transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1);
+}
+
+/* Aesthetic close (X) button for image modal */
+.image-modal .close-modal {
+    position: absolute;
+    top: 28px;
+    right: 32px;
+    width: 46px;
+    height: 46px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.12rem;
+    line-height: 1;
+    font-weight: 500;
+    font-family: system-ui, sans-serif;
+    color: #ffffff;
+    background: radial-gradient(circle at 30% 30%, #3d3b63 0%, #272643 70%) border-box;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    cursor: pointer;
+    backdrop-filter: blur(6px) saturate(140%);
+    box-shadow:
+        0 4px 18px -4px rgba(0,0,0,0.55),
+        0 2px 6px -1px rgba(108,99,255,0.35);
+    transition:
+        background 0.28s cubic-bezier(.4,0,.2,1),
+        box-shadow 0.28s cubic-bezier(.4,0,.2,1),
+        transform 0.28s cubic-bezier(.4,1.6,.3,1),
+        border-color 0.28s,
+        color 0.28s;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.image-modal .close-modal:hover {
+    background: radial-gradient(circle at 30% 30%, #6C63FF 0%, #4a458b 70%);
+    box-shadow:
+        0 6px 26px -4px rgba(108,99,255,0.55),
+        0 3px 10px -2px rgba(0,0,0,0.55);
+    transform: scale(1.08);
+}
+
+.image-modal .close-modal:active {
+    transform: scale(0.94);
+    background: radial-gradient(circle at 30% 30%, #5a52e6 0%, #403c74 70%);
+    box-shadow:
+        0 3px 12px -2px rgba(108,99,255,0.45),
+        0 2px 6px -2px rgba(0,0,0,0.6);
+}
+
+.image-modal .close-modal:focus-visible {
+    border-color: #9c95ff;
+    box-shadow:
+        0 0 0 3px rgba(108,99,255,0.45),
+        0 6px 26px -4px rgba(108,99,255,0.55),
+        0 3px 10px -2px rgba(0,0,0,0.55);
+}
+
+@media (max-width: 600px) {
+    .image-modal .close-modal {
+        top: 18px;
+        right: 18px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.4rem;
     }
 }
