@@ -1303,7 +1303,7 @@ html {
 
 .image-modal img.fade { opacity: 0; }
 
-/* Close button (ensure visible) */
+/* Close button */
 .image-modal .close-modal {
     position: absolute;
     top: 28px;
@@ -1336,8 +1336,8 @@ html {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    width: 54px;
-    height: 54px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(45,45,70,0.65);
@@ -1376,7 +1376,7 @@ html {
     width: 100%;
 }
 
-/* Navigation visibility states (do NOT hide counter) */
+/* Navigation visibility states */
 .image-modal.hide-prev .nav-btn.prev { display: none; }
 .image-modal.hide-next .nav-btn.next { display: none; }
 .image-modal.no-nav .nav-btn { display: none; }  /* only buttons */
