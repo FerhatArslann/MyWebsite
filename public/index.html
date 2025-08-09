@@ -116,7 +116,8 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/MyWebsite.png,../public/assets/projects/MyWebsite-2.png,../public/assets/projects/MyWebsite-3.png">
                         <img src="../public/assets/projects/MyWebsite.png" alt="Portfolio Website">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -139,7 +140,8 @@
                 </div>
                 <!-- Project 2 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/GoogleMapsApp.png,../public/assets/projects/GoogleMapsApp-2.png,../public/assets/projects/GoogleMapsApp-3.png">
                         <img src="../public/assets/projects/GoogleMapsApp.png" alt="Google Maps App">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -161,7 +163,8 @@
                 </div>
                 <!-- Project 3 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/Cities-Service.png,../public/assets/projects/Cities-Service-2.png,../public/assets/projects/Cities-Service-3.png">
                         <img src="../public/assets/projects/Cities-Service.png" alt="Cities Service API">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -184,11 +187,10 @@
                 </div>
                 <!-- Project 4 -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="../public/assets/projects/Weather-App.png" alt="Weather App">
-                        <span class="popup-icon">
-                            <i class="fas fa-expand"></i>
-                        </span>
+                    <div class="project-image"
+                         data-images="../public/assets/projects/Weather.png,../public/assets/projects/Weather-2.png,../public/assets/projects/Weather-3.png">
+                        <img src="../public/assets/projects/Weather.png" alt="Weather App main screen">
+                        <span class="popup-icon"><i class="fas fa-expand"></i></span>
                     </div>
                     <div class="project-info">
                         <h3>Weather App</h3>
@@ -207,7 +209,8 @@
                 </div>
                 <!-- Project 5 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/Cities-App.png,../public/assets/projects/Cities-App-2.png,../public/assets/projects/Cities-App-3.png">
                         <img src="../public/assets/projects/Cities-App.png" alt="Cities App">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -230,7 +233,8 @@
                 </div>
                 <!-- Project 6 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/Shopping-List-App.png,../public/assets/projects/Shopping-List-App-2.png,../public/assets/projects/Shopping-List-App-3.png">
                         <img src="../public/assets/projects/Shopping-List-App.png" alt="Shopping List App">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -253,7 +257,8 @@
                 </div>
                 <!-- Project 7 -->
                 <div class="project-card">
-                    <div class="project-image">
+                    <div class="project-image" 
+                         data-images="../public/assets/projects/ToDoApp.png,../public/assets/projects/ToDoApp-2.png,../public/assets/projects/ToDoApp-3.png">
                         <img src="../public/assets/projects/ToDoApp.png" alt="To-Do List App">
                         <span class="popup-icon">
                             <i class="fas fa-expand"></i>
@@ -328,11 +333,14 @@
     <!-- Main JavaScript file -->
     <script src="../scripts/main.js"></script>
     <!-- Image modal for project screenshots -->
-    <div id="image-modal" class="image-modal">
-        <button type="button" class="close-modal" aria-label="Close">
-            &times;
-        </button>
-        <img id="modal-img" src="" alt="Project Screenshot" />
+    <div id="image-modal" class="image-modal" aria-hidden="true" role="dialog">
+        <button type="button" class="close-modal" aria-label="Close">&times;</button>
+        <div class="modal-inner">
+            <button type="button" class="nav-btn prev" aria-label="Previous">&#10094;</button>
+            <img id="modal-img" alt="Project screenshot">
+            <button type="button" class="nav-btn next" aria-label="Next">&#10095;</button>
+        </div>
+        <div class="counter" id="modal-counter"></div>
     </div>
 </body>
 </html>

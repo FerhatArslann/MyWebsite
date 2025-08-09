@@ -216,44 +216,121 @@ document.querySelectorAll('.about-text p').forEach(p => {
 document.addEventListener('DOMContentLoaded', () => {
     const modal = document.getElementById('image-modal');
     const modalImg = document.getElementById('modal-img');
-    const closeBtn = modal ? modal.querySelector('.close-modal') : null;
+    const counterEl = document.getElementById('modal-counter');
+    const closeBtn = modal?.querySelector('.close-modal');
+    const prevBtn = modal?.querySelector('.nav-btn.prev');
+    const nextBtn = modal?.querySelector('.nav-btn.next');
+    if (!modal || !modalImg || !counterEl) {
+        console.warn('Modal elements missing'); 
+        return;
+    }
 
-    if (!modal || !modalImg) return;
+    let gallery = [];
+    let index = 0;
 
-    // Open when clicking popup icon OR the image container
-    document.querySelectorAll('.project-image').forEach(container => {
-        container.addEventListener('click', e => {
-            const imgEl = container.querySelector('img');
-            if (!imgEl) return;
-            // If user clicked the icon or anywhere on image container
-            if (e.target.closest('.popup-icon') || e.currentTarget === container) {
-                modalImg.src = imgEl.src;
-                modal.classList.add('active');
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('lock-scroll');
+    function resetStateClasses() {
+        modal.classList.remove('hide-prev','hide-next','no-nav');
+    }
+
+    function updateNavVisibility() {
+        resetStateClasses();
+        if (gallery.length === 1) {
+            modal.classList.add('no-nav'); // hides only nav buttons
+            return;
+        }
+        if (index === 0) modal.classList.add('hide-prev');
+        else if (index === gallery.length - 1) modal.classList.add('hide-next');
+    }
+
+    function openModal(images, startIdx = 0) {
+        gallery = images;
+        index = Math.min(Math.max(0, startIdx), gallery.length - 1);
+        updateImage(true);
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden','false');
+        document.body.classList.add('lock-scroll');
+    }
+
+    function updateImage(initial = false) {
+        if (!gallery.length) return;
+        const src = gallery[index];
+        if (!initial) modalImg.classList.add('fade');
+        setTimeout(() => {
+            modalImg.src = src;
+            modalImg.onload = () => modalImg.classList.remove('fade');
+        }, initial ? 0 : 120);
+
+        counterEl.textContent = `${index + 1} / ${gallery.length}`;
+        updateNavVisibility();
+
+        // Preload neighbors
+        [index - 1, index + 1].forEach(i => {
+            if (i >= 0 && i < gallery.length) {
+                const im = new Image();
+                im.src = gallery[i];
             }
         });
-    });
+    }
 
     function closeModal() {
         modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        modalImg.src = '';
+        modal.setAttribute('aria-hidden','true');
         document.body.classList.remove('lock-scroll');
+        resetStateClasses();
+        gallery = [];
+        index = 0;
+        modalImg.src = '';
+        counterEl.textContent = '';
     }
 
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeModal);
+    function next() {
+        if (index >= gallery.length - 1) return;
+        index++;
+        updateImage();
     }
 
-    // Click outside image closes
-    modal.addEventListener('click', e => {
-        if (e.target === modal) closeModal();
+    function prev() {
+        if (index <= 0) return;
+        index--;
+        updateImage();
+    }
+
+    // Open handlers
+    document.querySelectorAll('.project-image').forEach(container => {
+        container.addEventListener('click', e => {
+            if (!e.target.closest('.popup-icon') && e.currentTarget !== container) return;
+            const dataAttr = container.getAttribute('data-images');
+            let images = [];
+            if (dataAttr) {
+                images = dataAttr.split(',').map(s => s.trim()).filter(Boolean);
+            } else {
+                const single = container.querySelector('img')?.getAttribute('src');
+                if (single) images = [single];
+            }
+            if (images.length) openModal(images, 0);
+        });
     });
 
-    // ESC key closes
+    closeBtn?.addEventListener('click', closeModal);
+    prevBtn?.addEventListener('click', prev);
+    nextBtn?.addEventListener('click', next);
+
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
     document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        if (!modal.classList.contains('active')) return;
+        if (e.key === 'Escape') closeModal();
+        else if (e.key === 'ArrowRight') next();
+        else if (e.key === 'ArrowLeft') prev();
+    });
+
+    // Swipe
+    let startX = null;
+    modal.addEventListener('touchstart', e => startX = e.changedTouches[0].clientX);
+    modal.addEventListener('touchend', e => {
+        if (startX == null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 50) (dx < 0 ? next() : prev());
+        startX = null;
     });
 });
-// === End Popup Image Modal Setup ===

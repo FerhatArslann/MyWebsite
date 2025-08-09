@@ -1162,7 +1162,6 @@ html {
     box-shadow: 0 2px 8px rgba(80, 80, 120, 0.08);
     display: inline-block;
     margin-left: 0.5rem;
-    border: none;
 }
 
 .contact-link:hover, .contact-link:focus {
@@ -1294,17 +1293,17 @@ html {
 }
 
 .image-modal img {
-    max-width: 90vw;
-    max-height: 80vh;
-    border-radius: 18px;
-    box-shadow: 0 8px 32px rgba(108,99,255,0.18), 0 2px 12px rgba(0,0,0,0.13);
-    background: #23223a;
-    border: 2px solid #35345a;
-    margin-bottom: 2rem;
-    transition: box-shadow 0.22s cubic-bezier(.4,2,.3,1);
+    position: relative;
+    z-index: 10;
+    max-width: 86vw;
+    max-height: 76vh;
+    object-fit: contain;
+    transition: opacity .25s ease;
 }
 
-/* Aesthetic close (X) button for image modal */
+.image-modal img.fade { opacity: 0; }
+
+/* Close button (ensure visible) */
 .image-modal .close-modal {
     position: absolute;
     top: 28px;
@@ -1314,41 +1313,73 @@ html {
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 50%;
     background: radial-gradient(circle at 30% 30%, #3d3b63 0%, #272643 70%);
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1;
     cursor: pointer;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;                /* Remove extra space */
-    box-shadow:
-        0 4px 18px -4px rgba(0,0,0,0.55),
-        0 2px 6px -1px rgba(108,99,255,0.35);
-    transition:
-        background .28s cubic-bezier(.4,0,.2,1),
-        box-shadow .28s cubic-bezier(.4,0,.2,1),
-        transform .28s cubic-bezier(.4,1.6,.3,1),
-        border-color .28s;
-    font-size: 0;              /* Hide any direct text node spacing */
+    z-index: 40;
+    box-shadow: 0 4px 18px -4px rgba(0,0,0,0.55);
+    transition: background .25s, transform .25s, box-shadow .25s;
 }
-
-.image-modal .close-modal::before {
-    content: "×";
-    font-size: 1.7rem;
-    font-weight: 500;
-    line-height: 1;
-    color: #fff;
-    display: block;
-    transform: translateY(-1px); /* Fine vertical optical adjust; remove if not needed */
-}
-
 .image-modal .close-modal:hover {
     background: radial-gradient(circle at 30% 30%, #6C63FF 0%, #4a458b 70%);
     transform: scale(1.08);
 }
+.image-modal .close-modal:active { transform: scale(.92); }
 
-.image-modal .close-modal:active {
-    transform: scale(0.94);
-    background: radial-gradient(circle at 30% 30%, #5a52e6 0%, #403c74 70%);
+/* Navigation arrows */
+.image-modal .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(45,45,70,0.65);
+    color: #fff;
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    z-index: 30;
+    transition: background .25s, transform .25s, box-shadow .25s;
+    user-select: none;
 }
+.image-modal .nav-btn.prev { left: clamp(12px, 2vw, 48px); }
+.image-modal .nav-btn.next { right: clamp(12px, 2vw, 48px); }
+
+.image-modal .nav-btn:hover {
+    background: #6C63FF;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 18px -4px rgba(108,99,255,0.55);
+}
+.image-modal .nav-btn:active {
+    transform: translateY(-50%) scale(.92);
+}
+
+/* Counter */
+.image-modal .counter {
+    margin-top: 14px;
+    font: 500 0.9rem system-ui, sans-serif;
+    color: #d0d0de;
+    letter-spacing: .5px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Navigation visibility states (do NOT hide counter) */
+.image-modal.hide-prev .nav-btn.prev { display: none; }
+.image-modal.hide-next .nav-btn.next { display: none; }
+.image-modal.no-nav .nav-btn { display: none; }  /* only buttons */
 
 @media (max-width: 600px) {
     .image-modal .close-modal {
@@ -1356,9 +1387,14 @@ html {
         right: 18px;
         width: 42px;
         height: 42px;
+        font-size: 1.6rem;
     }
-    .image-modal .close-modal::before {
+    .image-modal .nav-btn {
+        width: 48px;
+        height: 48px;
         font-size: 1.5rem;
-        transform: translateY(-1px);
+    }
+    .image-modal .counter {
+        bottom: -36px;
     }
 }
