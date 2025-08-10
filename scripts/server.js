@@ -14,7 +14,12 @@ app.use(express.json()); // Parse JSON request bodies
 
 // Handle POST requests to /api/contact for contact form submissions
 app.post('/api/contact', async (req, res) => {
-    const { name, email, message } = req.body;
+    const { name, email, phone, company, subject, message } = req.body;
+
+    // Basic server-side validation
+    if (!name || !email || !subject || !message || !phone) {
+        return res.status(400).json({ success: false, error: "Missing required fields." });
+    }
 
     // Configure your email transport using Gmail and credentials from .env
     let transporter = nodemailer.createTransport({
@@ -30,12 +35,16 @@ app.post('/api/contact', async (req, res) => {
         await transporter.sendMail({
             from: process.env.EMAIL_USER, // Always your authenticated email
             to: process.env.EMAIL_USER,   // Your email
-            subject: `[MyWebsite Contact] Message from ${name}`,
+            subject: `[MyWebsite Contact] ${subject} - ${name}`,
             text: `
 You have a new contact form submission from your website:
 
 Name: ${name}
 Email: ${email}
+Phone: ${phone}
+Company: ${company || '-'}
+
+Subject: ${subject}
 
 Message:
 ${message}
