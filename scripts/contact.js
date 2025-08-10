@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const formMessage = document.getElementById("formMessage");
     const message = document.getElementById('message');
     const counter = document.getElementById('message-counter');
+    
     let lastSubmit = 0;
 
     // Live character counter for message
