@@ -46,6 +46,9 @@ body > * {
 html {
     scroll-behavior: smooth;
 }
+body.lock-scroll {
+    overflow: hidden;
+}
 
 /* =========================
    Header & Navigation
