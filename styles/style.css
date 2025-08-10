@@ -314,17 +314,38 @@ nav ul li a:hover {
 
 /* --- Project Card Styles --- */
 .project-card {
-    background: rgba(35,34,58,0.96);
-    border-radius: 18px;
-    overflow: hidden;
-    box-shadow: 0 4px 24px rgba(108,99,255,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
-    color: #e0e0e0;
-    transition: transform 0.22s cubic-bezier(.4,2,.3,1), box-shadow 0.22s;
+    background: rgba(44, 44, 64, 0.28); /* glass effect like .skill-card */
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(108,99,255,0.07);
+    transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1), opacity 0.3s, transform 0.22s cubic-bezier(.4,2,.3,1);
     display: flex;
     flex-direction: column;
     align-items: stretch;
     min-height: 340px;
     position: relative;
+    color: #e0e0e0;
+    cursor: default;
+    opacity: 0.96;
+    will-change: opacity;
+    backdrop-filter: blur(1.5px);
+    border: 1.5px solid rgba(108,99,255,0.08);
+    overflow: hidden;
+}
+.project-card::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 60%;
+    background: linear-gradient(120deg, rgba(108,99,255,0.10) 0%, rgba(255,101,132,0.08) 100%);
+    filter: blur(18px);
+    z-index: 0;
+    pointer-events: none;
+}
+.project-card > * {
+    position: relative;
+    z-index: 1;
 }
 .project-image {
     width: 100%;
@@ -473,6 +494,27 @@ nav ul li a:hover {
     max-width: 1100px;
     margin: 0 auto;
 }
+.skills-section h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--primary-color, #6C63FF);
+    margin-bottom: 1.2rem;
+    letter-spacing: -1px;
+    text-align: center;
+    position: relative;
+}
+
+.skills-section h2::after {
+    content: "";
+    display: block;
+    margin: 0.7rem auto 0 auto;
+    width: 200px;
+    height: 4px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #6C63FF 0%, #FF6584 100%);
+    opacity: 0.7;
+}
+
 .skill-card {
     background: rgba(44, 44, 64, 0.28);
     padding: 2.2rem 1.5rem 1.5rem 1.5rem;
