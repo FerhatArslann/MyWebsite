@@ -1377,9 +1377,9 @@ html {
 }
 
 /* Navigation visibility states */
-.image-modal.hide-prev .nav-btn.prev { display: none; }
-.image-modal.hide-next .nav-btn.next { display: none; }
-.image-modal.no-nav .nav-btn { display: none; }  /* only buttons */
+.image-modal.hide-prev .nav-btn.prev { display:none; }
+.image-modal.hide-next .nav-btn.next { display:none; }
+.image-modal.no-nav .nav-btn { display:none; } /* counter NOT hidden */
 
 @media (max-width: 600px) {
     .image-modal .close-modal {
