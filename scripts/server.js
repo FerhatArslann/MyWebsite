@@ -16,8 +16,8 @@ app.use(express.json()); // Parse JSON request bodies
 app.post('/api/contact', async (req, res) => {
     const { name, email, phone, company, subject, message } = req.body;
 
-    // Basic server-side validation
-    if (!name || !email || !subject || !message || !phone) {
+    // Only require fields that have asterisk (required): name, email, subject, message
+    if (!name || !email || !subject || !message) {
         return res.status(400).json({ success: false, error: "Missing required fields." });
     }
 
@@ -33,16 +33,16 @@ app.post('/api/contact', async (req, res) => {
     try {
         // Send the email to your own address with the form details
         await transporter.sendMail({
-            from: process.env.EMAIL_USER, // Always your authenticated email
-            to: process.env.EMAIL_USER,   // Your email
+            from: process.env.EMAIL_USER,
+            to: process.env.EMAIL_USER,
             subject: `[MyWebsite Contact] ${subject} - ${name}`,
             text: `
 You have a new contact form submission from your website:
 
 Name: ${name}
 Email: ${email}
-Phone: ${phone}
-Company: ${company || '-'}
+Phone: ${phone || ''}
+Company: ${company || ''}
 
 Subject: ${subject}
 
@@ -50,10 +50,8 @@ Message:
 ${message}
 `
         });
-        // Respond with success if email sent
         res.json({ success: true });
     } catch (err) {
-        // Respond with error if sending fails
         res.status(500).json({ success: false, error: err.message });
     }
 });
