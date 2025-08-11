@@ -4,9 +4,17 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
+const mongoose = require('mongoose');
 
 // Load environment variables from .env file
 require('dotenv').config();
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}).then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
 const app = express();
 app.use(cors()); // Enable Cross-Origin Resource Sharing
