@@ -5,6 +5,7 @@ const express = require('express');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const ContactMessage = require('./models/ContactMessage');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -29,16 +30,19 @@ app.post('/api/contact', async (req, res) => {
         return res.status(400).json({ success: false, error: "Missing required fields." });
     }
 
-    // Configure your email transport using Gmail and credentials from .env
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
-        }
-    });
-
     try {
+        // Save the contact message to the database
+        await ContactMessage.create({ name, email, phone, company, subject, message });
+
+        // Configure your email transport using Gmail and credentials from .env
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.EMAIL_PASS
+            }
+        });
+
         // Send the email to your own address with the form details
         await transporter.sendMail({
             from: process.env.EMAIL_USER,
