@@ -1,4 +1,14 @@
 {
+  "name": "mywebsite",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node scripts/server.js",
+    "dev": "nodemon scripts/server.js"
+  },
+  "author": "0xcode",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^17.2.1",
