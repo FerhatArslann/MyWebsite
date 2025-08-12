@@ -6,6 +6,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const ContactMessage = require('./models/ContactMessage');
+const Project = require('./models/Project');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -63,6 +64,47 @@ ${message}
         res.json({ success: true });
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// Get all projects
+app.get('/api/projects', async (req, res) => {
+    try {
+        const projects = await Project.find().sort({ createdAt: -1 });
+        res.json(projects);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Add a new project
+app.post('/api/projects', async (req, res) => {
+    const { title, description, imageUrl, tags, link } = req.body;
+    try {
+        const project = await Project.create({ title, description, imageUrl, tags, link });
+        res.json(project);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Edit a project
+app.put('/api/projects/:id', async (req, res) => {
+    try {
+        const project = await Project.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        res.json(project);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// Delete a project
+app.delete('/api/projects/:id', async (req, res) => {
+    try {
+        await Project.findByIdAndDelete(req.params.id);
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 });
 
