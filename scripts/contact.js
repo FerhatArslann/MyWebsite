@@ -163,17 +163,20 @@ document.addEventListener("DOMContentLoaded", function() {
                     const input = document.getElementById(id);
                     if (input) input.placeholder = "";
                 });
-                // Set cooldown end timestamp in localStorage
                 const cooldownEndTime = Date.now() + 60000;
                 setCooldownEnd(cooldownEndTime);
-
-                // Hide success message after 10 seconds
                 messageTimeout = setTimeout(() => {
                     formMessage.textContent = "";
                 }, 10000);
             } else {
-                formMessage.textContent = "Error sending message. Please try again.";
-                formMessage.style.color = "#FF6584";
+                // Show rate limit message if returned from backend
+                if (result.error === 'Too many requests, please try again later.') {
+                    formMessage.textContent = result.error;
+                    formMessage.style.color = "#FF6584";
+                } else {
+                    formMessage.textContent = "Error sending message. Please try again.";
+                    formMessage.style.color = "#FF6584";
+                }
                 canSend = true;
             }
         } catch (err) {

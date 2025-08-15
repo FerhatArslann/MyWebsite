@@ -6,7 +6,7 @@ const nodemailer = require('nodemailer');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const ContactMessage = require('./models/ContactMessage');
-const Project = require('./models/Project');
+const rateLimit = require('express-rate-limit');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -21,13 +21,29 @@ app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.static('public'));
 
-// Handle POST requests to /api/contact for contact form submissions
-app.post('/api/contact', async (req, res) => {
-    const { name, email, phone, company, subject, message } = req.body;
+// Rate limiter middleware
+const contactLimiter = rateLimit({
+    windowMs: 60 * 60 * 1000, // 1 hour
+    max: 3, // limit each IP to 3 requests per hour
+    message: { success: false, error: 'Too many requests, please try again later.' }
+});
 
-    // Only require fields that have asterisk (required): name, email, subject, message
+// Handle POST requests to /api/contact for contact form submissions
+app.post('/api/contact', contactLimiter, async (req, res) => {
+    const { name, email, phone, company, subject, message, website } = req.body;
+
+    // Honeypot spam protection
+    if (website) {
+        return res.status(400).json({ success: false, error: "Spam detected." });
+    }
+
+    // Server-side validation
     if (!name || !email || !subject || !message) {
         return res.status(400).json({ success: false, error: "Missing required fields." });
+    }
+    // Basic email format check
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return res.status(400).json({ success: false, error: "Invalid email format." });
     }
 
     try {
