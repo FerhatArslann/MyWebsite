@@ -7,6 +7,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const ContactMessage = require('./models/ContactMessage');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -20,6 +21,12 @@ const app = express();
 app.use(cors()); // Enable Cross-Origin Resource Sharing
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.static('public'));
+
+// Serve public folder
+app.use(express.static(path.join(__dirname, '../public')));
+// Serve styles and scripts folders
+app.use('/styles', express.static(path.join(__dirname, '../styles')));
+app.use('/scripts', express.static(path.join(__dirname, '../scripts')));
 
 // Rate limiter middleware
 const contactLimiter = rateLimit({
