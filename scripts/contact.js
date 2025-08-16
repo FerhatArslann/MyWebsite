@@ -146,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formMessage.style.color = "#fac460ff";
 
         try {
-            const response = await fetch('http://localhost:3001/api/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, phone, company, subject, message: messageValue })
