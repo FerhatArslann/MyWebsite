@@ -1279,3 +1279,18 @@ footer p {
         bottom: -36px;
     }
 }
+
+/* Add padding for mobile screens */
+@media (max-width: 600px) {
+    .hero-section,
+    .hero-content,
+    .about-section,
+    .about-section-content,
+    .skills-section,
+    .section-content,
+    .projects-section,
+    .contact-section {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
