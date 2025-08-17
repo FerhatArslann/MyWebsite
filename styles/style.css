@@ -1302,3 +1302,27 @@ footer p {
         padding-right: 10px;
     }
 }
+
+/* Subtle badge intro above H1 */
+.hero-intro-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 6px 18px;
+    font-size: 1.08rem;
+    color: #bdb6e5;
+    font-weight: 500;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 8px rgba(108,99,255,0.05);
+    transform: translateY(-16px);
+    opacity: 0; /* Add this line */
+    animation: fadeInDown 1.2s cubic-bezier(.6,.2,.3,1) 0.2s forwards;
+    letter-spacing: 0.01em;
+}
+
+@keyframes fadeInDown {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
