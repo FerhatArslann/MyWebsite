@@ -1326,3 +1326,25 @@ footer p {
         transform: translateY(0);
     }
 }
+
+@media (max-width: 900px), (pointer: coarse) {
+    body {
+        background:
+            linear-gradient(120deg, rgba(108,99,255,0.13) 0%, rgba(255,101,132,0.10) 100%),
+            url('/assets/background-image/bg_style.png') center top / cover no-repeat;
+        background-attachment: scroll;
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+}
+.parallax-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 0;
+    background:
+        linear-gradient(120deg, rgba(108,99,255,0.13) 0%, rgba(255,101,132,0.10) 100%),
+        url('/assets/background-image/bg_style.png') center top / cover no-repeat;
+    background-blend-mode: overlay;
+    pointer-events: none;
+}
