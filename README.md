@@ -35,6 +35,8 @@ A modern, responsive portfolio website to showcase my skills and projects. Built
 
 [![Demo Video](https://vumbnail.com/1110991198.jpg)](https://vimeo.com/1110991198)
 
+**Click the image above to watch a demo video.**
+
 ---
 
 ## ⚡ Installation & Setup
