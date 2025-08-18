@@ -1,11 +1,62 @@
-# Welcome to My Website!
+# 🚀 My Portfolio Website
 
-## Introduction
+A modern, responsive portfolio website to showcase my skills and projects. Built with best practices in design and development, this site is optimized for both desktop and mobile users.
 
-As a passionate web developer, I'm excited to share my portfolio with you. With a strong background in modern web technologies, I've built a collection of projects that showcase my skills and expertise.
+- **Visitors:**  
+  Browse projects, read about my skills, and use the contact form to get in touch.
 
-Thank you for taking the time to review my portfolio. I'm excited to showcase my skills and experience, and I look forward to the opportunity to work with you.
+- **Visit my website here:**
+[ferhatdev.com](https://www.ferhatdev.com/)
 
-## Contact Me
+---
 
-If you're interested in learning more about my projects or would like to discuss potential collaborations, please don't hesitate to reach out.
+## 🌟 Features
+
+- **Responsive Design:** Seamless experience across devices
+- **Parallax Background:** Background that is visually engaging
+- **Project Gallery:** Interactive showcase with images
+- **Contact Form:** Secure, with backend integration
+- **Smooth Animations:** Enhanced user experience
+- **Accessibility:** Easy to navigate
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend:** HTML5, CSS3, JavaScript (ES6)
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Email:** Nodemailer
+- **UI:** Font Awesome, Google Fonts
+
+---
+
+## 🎬 Demo Video
+
+[![Demo Video](https://vumbnail.com/1110991198.jpg)](https://vimeo.com/1110991198)
+
+---
+
+## ⚡ Installation & Setup
+
+1. **Install dependencies:**
+    ```bash
+    npm install
+    ```
+2. **Start the development server:**
+    ```bash
+    npm start
+    ```
+3. **Open in your browser:**  
+   Visit `http://localhost:3000`
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+> Thank you for visiting my portfolio!  
+> Feel free to connect, collaborate, or provide feedback.
