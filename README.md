@@ -39,10 +39,19 @@ A modern, responsive portfolio website to showcase my skills and projects. Built
 
 ---
 
-## Images
+## 🖼️ Screenshots  
 
-<img src="public/assets/projects/MyWebsite/MyWebsite.png" alt="Website Screenshot" width="500"/>
-<img src="public/assets/projects/MyWebsite/MyWebsite-2.png" alt="Website Screenshot" width="500"/>
+### 📱 Mobile View  
+
+<img src="public/assets/projects/MyWebsite/mywebsite_mobile.png" alt="Mobile Screenshot" width="300"/>
+
+---
+
+### 💻 Desktop View  
+
+<img src="public/assets/projects/MyWebsite/MyWebsite.png" alt="Desktop Screenshot 1" width="600"/>
+  <br/>
+<img src="public/assets/projects/MyWebsite/MyWebsite-2.png" alt="Desktop Screenshot 2" width="600"/>
 
 ---
 
