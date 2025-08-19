@@ -35,28 +35,14 @@ A modern, responsive portfolio website to showcase my skills and projects. Built
 
 [![Demo Video](https://vumbnail.com/1110991198.jpg)](https://vimeo.com/1110991198)
 
-**Click the image above to watch a demo video.**
+**Click the image above to watch a demo video on Vimeo.**
 
 ---
 
-## ⚡ Installation & Setup
+## Images
 
-1. **Install dependencies:**
-    ```bash
-    npm install
-    ```
-2. **Start the development server:**
-    ```bash
-    npm start
-    ```
-3. **Open in your browser:**  
-   Visit `http://localhost:3000`
-
----
-
-## 📜 License
-
-This project is licensed under the MIT License.
+<img src="public/assets/projects/MyWebsite/MyWebsite.png" alt="Website Screenshot" width="500"/>
+<img src="public/assets/projects/MyWebsite/MyWebsite-2.png" alt="Website Screenshot" width="500"/>
 
 ---
 
